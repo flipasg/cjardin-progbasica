@@ -11,11 +11,14 @@ public class Loro  extends Ave{
 	private char region;
 	private String color;
 	
-	/**
-	 * 
-	 */
-	public Loro(char sexo, int edad, char region, String color) {
-		super(sexo, edad);
+	public Loro(char sexo,int edad,char region,String color){
+		super(sexo,edad);
+		this.region = region;
+		this.color = color;
+	}
+	
+	public Loro(char sexo, int edad, char region, String color, String nombreAve, String nombreDuenio) {
+		super(sexo, edad, nombreAve, nombreDuenio);
 		this.region = region;
 		this.color = color;
 	}
@@ -39,7 +42,7 @@ public class Loro  extends Ave{
 		}
 	}
 	
-	void cantar(){
+	public void cantar(){
 		super.cantar();
 		System.out.print(", Piiio-piiio loro bonito");
 	}

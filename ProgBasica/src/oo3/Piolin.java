@@ -19,7 +19,7 @@ public class Piolin  extends Canario{
 		this.numPelis = numPelis;
 	}
 	
-	void cantar(){
+	public void cantar(){
 		super.cantar();
 		System.out.print(", Pio-pio soy un Piolin");
 	}

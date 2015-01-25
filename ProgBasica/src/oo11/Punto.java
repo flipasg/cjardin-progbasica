@@ -4,6 +4,10 @@ package oo11;
  * @author ikk
  *
  */
+/**
+ * @author ikk
+ *
+ */
 public class Punto {
 	private double x,y;
 

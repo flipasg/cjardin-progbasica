@@ -23,6 +23,13 @@ public class Ave {
 		numAves++;
 	}
 	
+	public Ave(char sexo, int edad, String nombreAve, String nombreDuenio) {
+		this.sexo = sexo;
+		this.edad = edad;
+		nombres=new DatosPersonales(nombreAve, nombreDuenio);
+		numAves++;
+	}
+	
 	private static void numeroDeAves(){
 		System.out.println("Se han creado "+numAves+" aves");
 	}
@@ -30,7 +37,7 @@ public class Ave {
 		System.out.println("Sexo: "+sexo+" Edad: "+edad);
 	}
 	
-	void cantar(){
+	public void cantar(){
 		System.out.print("Mi nombre es "+nombres.getNombreAve());
 	}
 

@@ -6,14 +6,14 @@ class Persona {
 	private int altura;
 	private int peso;
 	
-	public Persona(String dni) {
+	Persona(String dni) {
 		this.dni = dni;
 		nombre = "";
 		altura = 0;
 		peso = 0;
 	}
 	
-	public Persona(String dni, String nombre, int altura, int peso) {
+	Persona(String dni, String nombre, int altura, int peso) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.altura = altura;

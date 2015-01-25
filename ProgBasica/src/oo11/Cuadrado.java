@@ -23,27 +23,8 @@ public class Cuadrado extends Figura{
 	 * @param vertice3
 	 */
 	private void calcularOtraDiagonal(Punto vertice1, Punto vertice3){
-		double diagonal;
-		double lado;
-		double ang;
-		double ca,sa;
-		double x2,y2,x4,y4;
-		
-		diagonal = Math.sqrt(Math.pow((vertice3.getX()-vertice1.getX()), 2)+Math.pow((vertice3.getY()-vertice1.getY()), 2));
-		lado = diagonal/(Math.sqrt(2));
-		
-		ang = (Math.PI/4)-Math.asin((vertice3.getY()-vertice1.getY())/diagonal);
-		sa = lado*Math.sin(ang);
-		ca = lado*Math.cos(ang);
-		
-		
-		x2 = vertice3.getX()-ca;
-		y2 = vertice3.getY()+sa;
-		x4 = vertice1.getX()+ca;
-		y4 = vertice1.getY()-sa; 
-		
-		vertice2 = new Punto(x2, y2);
-		vertice4 = new Punto(x4, y4);
+		vertice2 = new Punto(vertice3.getX(), vertice1.getY());
+		vertice4 = new Punto(vertice1.getX(), vertice3.getY());
 	}
 	
 
