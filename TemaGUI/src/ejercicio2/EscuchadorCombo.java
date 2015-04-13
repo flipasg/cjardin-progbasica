@@ -13,6 +13,9 @@ import javax.swing.JComboBox;
 //Comienza la clase EscuchadorCombo
 public class EscuchadorCombo implements ItemListener{
     
+    /* Método sobreescrito : itemStateChanged
+     * @see java.awt.event.ItemListener#itemStateChanged(java.awt.event.ItemEvent)
+     */
     @Override
     public void itemStateChanged(ItemEvent e) {
 	JComboBox<String> imgns = (JComboBox<String>) e.getSource();

@@ -17,6 +17,9 @@ public class Comentario extends JPanel {
     private JCheckBox snComentario;
     private JTextField comentario;
     
+    /**
+     * Constructor de la clase Comentario
+     */
     public Comentario() {
 	//instanciamos
 	snComentario = new JCheckBox("Guardar comentario");

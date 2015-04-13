@@ -17,6 +17,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private Comentario c;
     private JButton boton;
     
+    /**
+     * Constructor de la clase VentanaPrincipal
+     */
     public VentanaPrincipal() {
 	//instanciamos
 	pi = new PanelImagenes();
@@ -54,6 +57,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	setResizable(false);
     }
     
+    /* Método sobreescrito : actionPerformed
+     * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 	if(c.getSnComentario().isSelected()) { //si el checkbox esta seleccionado

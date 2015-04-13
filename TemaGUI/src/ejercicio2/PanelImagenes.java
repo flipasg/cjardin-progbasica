@@ -15,6 +15,9 @@ public class PanelImagenes extends JPanel {
     private static JLabel etiquetaImagen; //no me gusta la solucion de hacer los campos estaticos
     private static String dir = "src/ejercicio2/img/"; //no me gusta la solucion de hacer los campos estaticos
 
+    /**
+     * Constructor de la clase PanelImagenes
+     */
     public PanelImagenes() {
 	
 	File f = new File(dir); //usamos la clase file para obtener la lista de archivos
