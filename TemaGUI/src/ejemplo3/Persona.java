@@ -18,67 +18,48 @@ import javax.swing.JTextField;
 
 //Comienza la clase Persona
 public class Persona extends JFrame{
-    private JLabel edadLabel, nombreLabel; //declaramos los JLabel
-    private JTextField nombre; //declaramos el JTextField
-    private JComboBox<Integer> edad; //declaramos el JComboBox
+    private JLabel edadLabel, nombreLabel;
+    private JTextField nombre;
+    private JComboBox<Integer> edad;
     
     
-    /**
-     * Constructor de la clase Persona
-     */
     public Persona() {
-	super("Mi ventana"); //llámamos al constructor de la superclase, da el nombre a la ventana
-	
-	//vector con las edades 0-120
+	super("Mi ventana");
 	Vector<Integer> edades = new Vector<Integer>();
 	for (int i = 0; i < 121; i++) {
 	    edades.add(i);
 	}
 	
-	//variables de posicionamiento
-	int x = 0; //coordenada x
-	int y = 0; //coordenada y
-	int h = 125; //ancho
-	int w = 20; //alto
-	//width deberia ser ancho y heigth alto (w y h)
-	
-	
-	edadLabel = new JLabel("Edad: "); //instanciamos el JLabel del JComboBox
-	edadLabel.setBounds(x, y, h, w); //colocamos el JLabel
-	
-	nombreLabel = new JLabel("Nombre: "); //instanciamos el JLabel del JTextField
-	x = h; //desplazamos el JLabel a lo ancho
-	nombreLabel.setBounds(x, y, h, w); //colocamos el JLabel
-	
-	edad = new JComboBox<Integer>(edades); //instanciamos el JComboBox con las edades
-	edad.setSelectedItem(1); //establecemos el elemento seleccionado
-	x = 0; //la coordenada x vuelve a ser 0
-	y = w; //desplazamos el JComboBox en vertical (a lo alto)
-	edad.setBounds(x, y, h, w); //colocamos el JComboBox
-	
-	nombre = new JTextField(100); //instanciamos el JTextField
-	x = h; //desplazamos el JTextField a lo ancho
-	nombre.setBounds(x, y, h, w); //colocamos el JTextField
-	
-	setLayout(null); //quitamos el Layout por defecto
-	setDefaultCloseOperation(EXIT_ON_CLOSE); //establecemos la accion al cerrar la ventana
-	setSize(500, 500); //establecemos las dimensiones del JFrame
-	
-	add(edadLabel); //añadimos el JLabel de la edad
-	add(nombreLabel); //añadimos el JLabel del nombre
-	add(edad); //añadimos el JComboBox de la edad
-	add(nombre); //añadimos el JTextField del nombre
-	
-	setVisible(true); //JFrame visible
-    } //fin del constructor
+	int x = 0;
+	int y = 0;
+	int h = 125;
+	int w = 20;
+	edadLabel = new JLabel("Edad: ");
+	edadLabel.setBounds(x, y, h, w);
+	nombreLabel = new JLabel("Nombre: ");
+	x = h;
+	nombreLabel.setBounds(x, y, h, w);
+	edad = new JComboBox<Integer>(edades);
+	edad.setSelectedItem(1);
+	x = 0;
+	y = w;
+	edad.setBounds(x, y, h, w);
+	nombre = new JTextField(100);
+	x = h;
+	nombre.setBounds(x, y, h, w);
+	setLayout(null);
+	setDefaultCloseOperation(EXIT_ON_CLOSE);
+	setSize(500, 500);
+	add(edadLabel);
+	add(nombreLabel);
+	add(edad);
+	add(nombre);
+	setVisible(true);
+    }
     
-    /**
-     * Método : main
-     * @param args
-     */
     public static void main(String[] args) {
-	Persona person = new Persona(); //declaramos e instanciamos la persona
-    } //fin del main
+	Persona person = new Persona();
+    }
 
 } // fin de la clase persona
 
