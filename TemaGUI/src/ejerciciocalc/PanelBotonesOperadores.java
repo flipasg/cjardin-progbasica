@@ -4,20 +4,26 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import crearguis.PanelBasico;
 
 public class PanelBotonesOperadores extends PanelBasico implements ActionListener {
-    
+    private JButton suma, resta, division, multiplicacion, resto, factorial, borrartodo, borrar, igual;
+	
     @Override
     public void actionPerformed(ActionEvent e) {}
 
     @Override
-    public void instanciar() {}
+    public void instanciar() {
+	suma = new JButton("+");
+	resta = new JButton("-");
+    }
 
     @Override
     public void configurar() {
+	setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 	setLayout(new GridLayout(4, 2, 5, 5));
     }
 

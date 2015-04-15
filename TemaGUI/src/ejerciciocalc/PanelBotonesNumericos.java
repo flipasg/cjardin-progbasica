@@ -5,21 +5,24 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import crearguis.PanelBasico;
 
 public class PanelBotonesNumericos extends PanelBasico implements ActionListener{
+   
     private int numero;
     
     @Override
     public void instanciar() {
+	
     }
 
     @Override
     public void configurar() {
+	setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 0));
 	setLayout(new GridLayout(4, 3, 5, 5));
-	
     }
 
     @Override
