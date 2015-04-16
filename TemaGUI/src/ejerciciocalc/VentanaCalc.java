@@ -28,10 +28,9 @@ public class VentanaCalc extends VentanaBasica implements ActionListener {
     private JTextField resultado, ecuacion; //JTextFields con la información de los cálculos
     //JButtons con comportamiento similar (números y punto)
     private JButton cero, uno, dos, tres, cuatro, cinco, seis, siete, ocho, nueve, punto;
+    //JButtons con comportamiento similar (operadores, borrado y igual)
     private JButton suma, resta, division, multiplicacion, borrarTodo, borrar, igual;
-    private double numero1;
-    private JButton anterior;
-
+    private Calculadora c;
     /**
      * Constructor de la clase VentanaCalc
      * @param titulo
@@ -39,36 +38,26 @@ public class VentanaCalc extends VentanaBasica implements ActionListener {
      */
     public VentanaCalc(String titulo) throws HeadlessException {
 	super(titulo);
+	c = new Calculadora();
     }
     
     /**
      * Método : calcular
      * @param boton
-     * @param numero2
+     * @param numero
      */
-    private void calcular(JButton boton, double numero2) {
+    private String calcular(JButton boton, double numero) {
 	if(boton==suma) {
-	    numero1+=numero2;
-	    resultado.setText(Double.toString(numero1));
+	    c.suma(numero);
 	} else if(boton==resta) {
-	    numero1-=numero2;
-	    resultado.setText(Double.toString(numero1));
+	    c.resta(numero);
 	} else if(boton==multiplicacion) {
-	    if(numero1==0) numero1 = 1;
-	    numero1*=numero2;
-	    resultado.setText(Double.toString(numero1));
+	    if(c.getResultado()==0) c.setResultado(1);
+	    c.multiplicacion(numero);
 	} else if(boton==division) {
-	    if(numero2!=0) {
-		numero1/=numero2;
-		resultado.setText(Double.toString(numero1));
-	    } else {
-		JOptionPane.showMessageDialog(this, "No es posible realizar una division entre 0", "Error", JOptionPane.ERROR_MESSAGE);
-		ecuacion.setText("");
-		resultado.setText("");
-		numero1 = 0;
-	    }
-
-	} 
+	}
+	
+	return Double.toString(c.getResultado());
     }
     
     /* Método sobreescrito : instanciar
@@ -225,8 +214,6 @@ public class VentanaCalc extends VentanaBasica implements ActionListener {
 		    boton.setActionCommand("operador"); //si es un botón de operador le añadimos el comando operador
 		} else if(boton.getText().equals("C") || boton.getText().equals("CE")) {
 		    boton.setActionCommand("borrar"); //si es un botón de borrado le añadimos el comando borrar
-		} else if(boton.getText().equals(".")){
-		    boton.setActionCommand("punto");
 		} else if(boton.getText().equals("=")){
 		    boton.setActionCommand("igual");
 		} else {
@@ -261,48 +248,39 @@ public class VentanaCalc extends VentanaBasica implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+	//obtenemos el botón origen del evento
 	JButton presionado = (JButton) e.getSource();
+	
 	String texto = resultado.getText();
-//	HAY QUE MIRAR MEJOR EL MÉTODO
-//	
-//	if(texto.equals("")) {
-//	    if(presionado.getActionCommand().equals("numero")) {
-//		//numero1 = Double.parseDouble(presionado.getText());
-//		resultado.setText(texto+presionado.getText());
-//	    }
-//	} else {
-//	    double numero2 = Double.parseDouble(texto);
-//	    if(presionado.getActionCommand().equals("borrar")) {
-//		if(presionado.getText().equals("CE")) {
-//		    resultado.setText("");
-//		    ecuacion.setText("");
-//		    numero1 = 0;
-//		} else {
-//		    resultado.setText(texto.substring(0, texto.length()-1));
-//		}
-//	    } else if(presionado.getActionCommand().equals("operador")){
-//		//anterior = presionado;
-//		resultado.setText(texto+presionado.getText());
-//		ecuacion.setText(ecuacion.getText()+resultado.getText());
-//		
-//		calcular(presionado, numero2);
-//	    } else if(presionado.getActionCommand().equals("igual")){
-//		calcular(anterior, numero2);
-//		resultado.setText(Double.toString(numero1));
-//		ecuacion.setText("");
-//		anterior = null;
-//		numero1 = 0;
-//	    } else {
-//		if(!anterior.getActionCommand().equals("numero")) texto = "";
-//		
-//		resultado.setText(texto+presionado.getText());
-//		
-//		numero1 = Double.parseDouble(resultado.getText());
-//	    }
-//	    
-//	}
-//	anterior = presionado;
-    }
-    
+	String comando = presionado.getActionCommand();
+	String textoBoton = presionado.getText();
+	
+	
+	if(texto.matches("\\d*\\.?\\d*")) {
+	    if(comando.equals("numero")) {
+		if(texto.matches("\\d*\\.\\d*") && textoBoton.equalsIgnoreCase(".")) {
+		    //se ignora el botón "."
+		} else {
+		    resultado.setText(texto+textoBoton);
+		}
+	    } else {
+	    }
+	}
+	
+	
+	if(comando.equals("borrar")) {
+	    if(!texto.equals("")){
+		if(textoBoton.equals("CE")) {
+			resultado.setText("");
+			ecuacion.setText("");
+		    } else {
+			resultado.setText(texto.substring(0, texto.length()-1));
+		    }
+	    }
+	    
+	}
+	
+	
+    } 
     
 }
