@@ -1,12 +1,7 @@
 package ejerciciocalc;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
@@ -14,13 +9,9 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
 
 import crearguis.VentanaBasica;
 
@@ -39,25 +30,6 @@ public class VentanaCalc extends VentanaBasica implements ActionListener {
     public VentanaCalc(String titulo) throws HeadlessException {
 	super(titulo);
 	c = new Calculadora();
-    }
-    
-    /**
-     * Método : calcular
-     * @param boton
-     * @param numero
-     */
-    private String calcular(JButton boton, double numero) {
-	if(boton==suma) {
-	    c.suma(numero);
-	} else if(boton==resta) {
-	    c.resta(numero);
-	} else if(boton==multiplicacion) {
-	    if(c.getResultado()==0) c.setResultado(1);
-	    c.multiplicacion(numero);
-	} else if(boton==division) {
-	}
-	
-	return Double.toString(c.getResultado());
     }
     
     /* Método sobreescrito : instanciar
@@ -251,35 +223,31 @@ public class VentanaCalc extends VentanaBasica implements ActionListener {
 	//obtenemos el botón origen del evento
 	JButton presionado = (JButton) e.getSource();
 	
-	String texto = resultado.getText();
+	String textoResultado = resultado.getText();
+	String textoEcuacion = ecuacion.getText();
 	String comando = presionado.getActionCommand();
 	String textoBoton = presionado.getText();
 	
-	
-	if(texto.matches("\\d*\\.?\\d*")) {
-	    if(comando.equals("numero")) {
-		if(texto.matches("\\d*\\.\\d*") && textoBoton.equalsIgnoreCase(".")) {
-		    //se ignora el botón "."
-		} else {
-		    resultado.setText(texto+textoBoton);
-		}
-	    } else {
-	    }
+	if(comando.equals("numero")) {
+	    String numero = textoResultado+textoBoton;
+	    if(AnalizadorLexico.esNumeroValido(numero)) resultado.setText(numero);
 	}
-	
-	
-	if(comando.equals("borrar")) {
-	    if(!texto.equals("")){
-		if(textoBoton.equals("CE")) {
-			resultado.setText("");
-			ecuacion.setText("");
-		    } else {
-			resultado.setText(texto.substring(0, texto.length()-1));
-		    }
+	if(comando.equals("operador")) {
+	    if(!textoResultado.equals("")) {
+		
+		
+		ecuacion.setText(textoEcuacion+textoResultado+textoBoton);
 	    }
 	    
 	}
-	
+	if(comando.equals("borrar")) {
+	    if(textoBoton.equals("C")) {
+		ecuacion.setText("");
+		resultado.setText("");
+	    } else {
+		if(!textoResultado.equals("")) resultado.setText(textoResultado.substring(0, textoResultado.length()-1));
+	    }
+	}
 	
     } 
     
