@@ -5,24 +5,32 @@
  */
 package ejercicio2;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.JComboBox;
+import javax.swing.JPanel;
 
 //Comienza la clase EscuchadorCombo
-public class EscuchadorCombo implements ItemListener{
+public class EscuchadorCombo implements ActionListener{
+    private PanelImagenes p;
     
-    /* Método sobreescrito : itemStateChanged
-     * @see java.awt.event.ItemListener#itemStateChanged(java.awt.event.ItemEvent)
+    /**
+     * Constructor de la clase EscuchadorCombo
+     */
+    public EscuchadorCombo(PanelImagenes p) {
+	this.p = p;
+    }
+
+    /* Método sobreescrito : actionPerformed
+     * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
      */
     @Override
-    public void itemStateChanged(ItemEvent e) {
-	JComboBox<String> imgns = (JComboBox<String>) e.getSource();
+    public void actionPerformed(ActionEvent e) {
+	JComboBox<String> imgns = p.getImagenes();
 	String img = (String) imgns.getSelectedItem();
-	if (e.getStateChange() == ItemEvent.SELECTED) { //si hay un cambio de seleccion
-	    //establecemos el icono en la etiqueta
-	    PanelImagenes.getEtiquetaImagen().setIcon(PanelImagenes.redimensionarIcono(PanelImagenes.getDir()+img));
-	}
+	p.getEtiquetaImagen().setIcon(p.redimensionarIcono(PanelImagenes.getDir()+img));
     }
 }

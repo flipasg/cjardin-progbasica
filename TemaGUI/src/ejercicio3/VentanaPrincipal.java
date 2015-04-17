@@ -55,35 +55,31 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	    String a = ecuacion.getA().getText();
 	    String b = ecuacion.getB().getText();
 	    String c = ecuacion.getC().getText();
-	    
-	    if(!a.matches("\\d+") || !a.matches("\\d+") || !a.matches("\\d+")) {
-		ecuacion.reiniciarEcuacion();
-		try {
-		    throw new RaizException("Debes rellenar con 3 int");
-		} catch (RaizException e1) {
-		    JOptionPane.showMessageDialog(this, e1.getMessage());
-		}
-	    } else {
-		int numA = Integer.parseInt(a);
-		int numB = Integer.parseInt(b);
-		int numC = Integer.parseInt(c);
-		
-		float raiz = (float) Math.pow(numB, 2)-(4*numA*numC);
-		if(raiz<0) {
+	    try {
+		if(!a.matches("\\d+") || !b.matches("\\d+") || !c.matches("\\d+")) {
 		    ecuacion.reiniciarEcuacion();
-		    try {
-			throw new RaizException("Raiz negativa");
-		    } catch (RaizException e1) {
-			JOptionPane.showMessageDialog(this, e1.getMessage());
-		    }
+		    throw new RaizException("Debes rellenar con 3 int");
 		} else {
-		    float solucion1 = (float) ((-numB + Math.sqrt(raiz))/(2*numA));
-		    float solucion2 = (float) ((-numB - Math.sqrt(raiz))/(2*numA));
-		    soluciones.getS1().setText("Solucion 1: " + solucion1);
-		    soluciones.getS2().setText("Solucion 2: " + solucion2);
+		    int numA = Integer.parseInt(a);
+		    int numB = Integer.parseInt(b);
+		    int numC = Integer.parseInt(c);
+		    
+		    float raiz = (float) Math.pow(numB, 2)-(4*numA*numC);
+		    if(raiz<0) {
+			ecuacion.reiniciarEcuacion();
+			throw new RaizException("Raiz negativa");
+		    } else {
+			float solucion1 = (float) ((-numB + Math.sqrt(raiz))/(2*numA));
+			float solucion2 = (float) ((-numB - Math.sqrt(raiz))/(2*numA));
+			soluciones.getS1().setText("Solucion 1: " + solucion1);
+			soluciones.getS2().setText("Solucion 2: " + solucion2);
+		    }
+			
 		}
-		
+	    } catch (RaizException e1) {
+		JOptionPane.showMessageDialog(this, e1.getMessage());
 	    }
+
 	}
     } 
     

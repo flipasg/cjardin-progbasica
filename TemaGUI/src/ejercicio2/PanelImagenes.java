@@ -12,17 +12,15 @@ import javax.swing.JPanel;
 //Comienza la clase PanelImagenes
 public class PanelImagenes extends JPanel {
     private JComboBox<String> imagenes;
-    private static JLabel etiquetaImagen; //no me gusta la solucion de hacer los campos estaticos
-    private static String dir = "src/ejercicio2/img/"; //no me gusta la solucion de hacer los campos estaticos
+    private JLabel etiquetaImagen; 
+    private static final String dir = "img/"; 
 
     /**
      * Constructor de la clase PanelImagenes
      */
     public PanelImagenes() {
 	
-	File f = new File(dir); //usamos la clase file para obtener la lista de archivos
-	String[] arrayImagenes = f.list(); //array de String con los nombres de las imagenes
-	imagenes = new JComboBox<>(arrayImagenes); //creamos el combo
+	cargarCombo();
 	imagenes.setSelectedIndex(0); //seleccionamos la primera imagen
 	etiquetaImagen = new JLabel(); //creamos la etiqueta
 	//establecemos la primera imagen como icono, redimensionada
@@ -37,10 +35,19 @@ public class PanelImagenes extends JPanel {
 	add(etiquetaImagen);
 	
 	//establecemos oyentes
-	imagenes.addItemListener(new EscuchadorCombo());
+	imagenes.addActionListener(new EscuchadorCombo(this));
 	
 	//propiedades finales
 	setVisible(true);
+    }
+    
+    /**
+     * Método : cargarCombo
+     */
+    private void cargarCombo() {
+	File f = new File(dir); //usamos la clase file para obtener la lista de archivos
+	String[] arrayImagenes = f.list(); //array de String con los nombres de las imagenes
+	imagenes = new JComboBox<>(arrayImagenes); //creamos el combo
     }
     
     
@@ -49,7 +56,7 @@ public class PanelImagenes extends JPanel {
      * Método : redimensionarIcono
      * @return
      */
-    public static ImageIcon redimensionarIcono(String icono) {
+    public ImageIcon redimensionarIcono(String icono) {
 	ImageIcon icon = new ImageIcon(icono); //creamos un icono con la seleccion
 	Image i = icon.getImage(); //creamos una imagen con el icono
 	Image otrai = i.getScaledInstance(150,150,java.awt.Image.SCALE_SMOOTH); //redimensionamos la imagen
@@ -62,16 +69,8 @@ public class PanelImagenes extends JPanel {
      * Método obtener : getEtiquetaImagen
      * @return el etiquetaImagen de la clase
      */
-    public static JLabel getEtiquetaImagen() {
+    public JLabel getEtiquetaImagen() {
         return etiquetaImagen;
-    }
-
-    /**
-     * Método obtener : getDir
-     * @return el dir de la clase
-     */
-    public static String getDir() {
-        return dir;
     }
 
     /**
@@ -81,5 +80,16 @@ public class PanelImagenes extends JPanel {
     public JComboBox<String> getImagenes() {
         return imagenes;
     }
+
+
+    /**
+     * Método obtener : getDir
+     * @return el dir de la clase
+     */
+    public static String getDir() {
+        return dir;
+    }
+    
+    
     
 }

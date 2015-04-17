@@ -63,7 +63,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 	if(c.getSnComentario().isSelected()) { //si el checkbox esta seleccionado
-	    String dir = "src/ejercicio2/txt/"; //directorio para txt
+	    String dir = "txt/"; //directorio para txt
 	    String comentario = c.getComentario().getText(); //comentario
 	    String imagen = (String) pi.getImagenes().getSelectedItem(); //imagen con extension
 	    try {
