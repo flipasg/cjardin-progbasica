@@ -24,17 +24,13 @@ import crearguis.VentanaBasica;
 
 //Comienza la clase VentanaCalc
 public class VentanaCalc extends VentanaBasica implements ActionListener {
-    private JTextField resultado, ecuacion; //JTextFields con la información de los cálculos
+    private JTextField resultado, totalOperaciones; //JTextFields con la información de los cálculos
     //JButtons con comportamiento similar (números y punto)
     private JButton cero, uno, dos, tres, cuatro, cinco, seis, siete, ocho, nueve, punto;
-    //JButtons con comportamiento similar (operadores, borrado y igual)
+    //JButtons con comportamiento distinto (operadores, borrado y igual)
     private JButton suma, resta, division, multiplicacion, borrarTodo, borrar, igual;
-    
-    //no me salía una mejor solución
-    private boolean operacionRealizada; //llevaremos el control de si se ha realizado o no una operacion
-    private JButton anterior; //el botón que realizará la operación
-    private Double numeroResultado; //el resultado del las operacion que llevamos
-    private RealizadorDeOperaciones rdo; //realizador de operaciones
+    //Clase que llevará a cabo el cálculo
+    private Calculo c;
     
     /**
      * Constructor de la clase VentanaCalc
@@ -43,9 +39,6 @@ public class VentanaCalc extends VentanaBasica implements ActionListener {
      */
     public VentanaCalc(String titulo) throws HeadlessException {
 	super(titulo);
-	rdo = new RealizadorDeOperaciones();
-	anterior = null; //en un principio no se hemos pulsado ningún botón
-	numeroResultado = 0.0; //nuestro resultado final comienza a 0
     }
     
     /* Método sobreescrito : instanciar
@@ -53,8 +46,9 @@ public class VentanaCalc extends VentanaBasica implements ActionListener {
      */
     @Override
     public void instanciar() {
+	c = new Calculo();
 	//JTextFields
-	ecuacion= new JTextField();
+	totalOperaciones = new JTextField();
 	resultado = new JTextField();
 	//JButtons
 	cero = new JButton("0");
@@ -82,7 +76,7 @@ public class VentanaCalc extends VentanaBasica implements ActionListener {
      */
     @Override
     public void configurar() {
-	ecuacion.setEditable(false); //no se puede escribir en ningún JTextFields
+	totalOperaciones.setEditable(false); //no se puede escribir en ningún JTextFields
 	resultado.setEditable(false);
 	resultado.setBorder(new LineBorder(Color.BLACK, 2));
 	GridBagLayout gbl = new GridBagLayout();
@@ -179,7 +173,7 @@ public class VentanaCalc extends VentanaBasica implements ActionListener {
 	gbc.gridwidth = 5;
 	gbc.gridy = 0;
 	gbc.gridx = 0;
-	add(ecuacion, gbc);
+	add(totalOperaciones, gbc);
 	
 	gbc.gridy = 1;
 	gbc.gridx = 0;
@@ -199,6 +193,7 @@ public class VentanaCalc extends VentanaBasica implements ActionListener {
 		boton.addActionListener(this); //añadimos la ventana como oyente a todos los botones
 		if(boton.getText().equals("+") || boton.getText().equals("-") || boton.getText().equals("/") 
 			|| boton.getText().equals("*")) {
+		    
 		    //añadimos nombres a los botones de operación
 		    if(boton.getText().equals("+")) boton.setName("suma");
 		    if(boton.getText().equals("-")) boton.setName("resta");
@@ -237,79 +232,36 @@ public class VentanaCalc extends VentanaBasica implements ActionListener {
 	//obtenemos el botón origen del evento
 	JButton presionado = (JButton) e.getSource();
 	
-	String textoResultado = resultado.getText(); //texto del resultado actual
-	String textoEcuacion = ecuacion.getText(); //texto de la ecuación actual
 	String comando = presionado.getActionCommand(); //comando del botón presionado
-	String textoBoton = presionado.getText(); //texto del botón presionado
 	
 	if(comando.equals("numero")) { //si el comando es un numero
-	    //si se ha realizado una operacion
-	    //se mostrará el resultado y después se borra
-	    if(operacionRealizada) textoResultado = ""; 
-	    
-	    //obtenemos el numero después de presionar el botón
-	    String numero = textoResultado+textoBoton;
-	    //si es un número válido establecemos el JTextField del resultado al número
-	    if(AnalizadorLexico.esNumeroValido(numero)) resultado.setText(numero);
-	    operacionRealizada = false; //como no hemos realizado ninguna operación devolvemos el valor a false
+	    c.aniadirDigito(presionado.getText());
 	}
 	
-	if(!textoResultado.equals("")) { //solo escucharemos a los botones de comandos cuando el resultado tenga algún valor
+	if(!c.getResultado().equals("")) { //solo escucharemos a los botones de comandos cuando el resultado tenga algún valor
 	    if(comando.equals("operador")) {
-		//si hemos presionado un botón de operador antes, solo cambiaremos el operador final de la ecuación
-		if(operacionRealizada) ecuacion.setText(textoEcuacion.substring(0, textoEcuacion.length()-1)+textoBoton);
-		Double numero2 = Double.parseDouble(textoResultado); //obtenemos el número escrito en el resultado
-		if(textoEcuacion.equals("")) { //si no tenemos ninguna operacion
-		    numeroResultado = numero2; //establecemos ese numero al resultado final numérico
-		} else { //si no
-		    String nombreMetodo = anterior.getName(); //obtenemos el nombre del botón
-		    if(nombreMetodo.equals("division") && numero2==0.0) { //si se tiene que realizar una division y es por 0
-			//mostraremos una ventana de error
-			JOptionPane.showMessageDialog(this, "Imposible realizar division por 0", "Error", JOptionPane.ERROR_MESSAGE);
-			textoResultado = ""; //borraremos el resultado
-			ecuacion.setText(textoEcuacion.substring(0, textoEcuacion.length()-1)); //borraremos el operando
-		    } else { //si no realizaremos la operación
-			numeroResultado = rdo.operar(rdo.buscarMetodo(anterior.getName()), numeroResultado, numero2);
-		    }
-		}
-		
-		anterior = presionado; //asignamos el botón presionado al anterior
-		resultado.setText(Double.toString(numeroResultado)); //establecemos el resultado
-		ecuacion.setText(textoEcuacion+textoResultado+textoBoton); //establecemos la ecuación
-		operacionRealizada = true; //hemos realizado una operación
+		c.establecerOperacion(presionado);
+		c.calcular(resultado.getText());
 	    }	    
 	}
 	
 
 	if(comando.equals("igual")) { //si el comando es igual
-	    ecuacion.setText(""); //borramos la ecuacion
-	    Double numero2 = Double.parseDouble(textoResultado);
-	    
-	    //realizamos la última operación pendiente
-	    String nombreMetodo = anterior.getName();
-	    if(nombreMetodo.equals("division") && numero2==0.0) {
-		 JOptionPane.showMessageDialog(this, "Imposible realizar division por 0", "Error", JOptionPane.ERROR_MESSAGE);
-		 textoResultado = "";
-		 ecuacion.setText(textoEcuacion.substring(0, textoEcuacion.length()-1));
-	    } else {
-		numeroResultado = rdo.operar(rdo.buscarMetodo(anterior.getName()), numeroResultado, numero2);
-	    }
-	    
-	    //establecemos el resultado
-	    resultado.setText(Double.toString(numeroResultado));
-	    numeroResultado = 0.0; //reiniciamos el resultado numérico
-	    operacionRealizada = true; //hemos realizado una operación
+	    c.borrarOperaciones();
+	    c.calcular(resultado.getText());
+	    c.setResultadoNumerico(0.0);
 	}
 	
 	if(comando.equals("borrar")) { //si el comando es borrar
-	    if(textoBoton.equals("C")) { //C - BORRAR TODO
-		ecuacion.setText(""); //reiniciamos la ecuación
-		resultado.setText(""); //reiniciamos el resultado
-		numeroResultado = 0.0; //reiniciamos el resultado numérico
+	    if(presionado.getText().equals("C")) { //borramos todo
+		c.vaciar();
 	    } else { //si no solo borramos un dígito
-		if(!textoResultado.equals("")) resultado.setText(textoResultado.substring(0, textoResultado.length()-1));
+		c.borrarDigito();
 	    }
 	}
+	
+	totalOperaciones.setText(c.getOperaciones());
+	resultado.setText(c.getResultado());
 	
     } 
     
