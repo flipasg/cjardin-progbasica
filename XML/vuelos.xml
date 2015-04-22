@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vuelos>
+  <vuelo id="0090">
+    <origen>Bilbao</origen>
+    <destino>Madrid</destino>
+  </vuelo>
+  <vuelo id="0091">
+    <origen>Bilbao</origen>
+    <destino>Vitoria-Gasteiz</destino>
+  </vuelo>
+  <vuelo id="0092">
+    <origen>Vitoria-Gasteiz</origen>
+    <destino>Madrid</destino>
+  </vuelo>
+  <vuelo id="0093">
+    <origen>Bilbao</origen>
+    <destino>Malaga</destino>
+  </vuelo>
+  <vuelo id="0094">
+    <origen>Sevilla</origen>
+    <destino>Madrid</destino>
+  </vuelo>
+  <vuelo id="0095">
+    <origen>Vitoria-Gasteiz</origen>
+    <destino>Pekin</destino>
+  </vuelo>
+  <vuelo id="0096">
+    <origen>Bilbao</origen>
+    <destino>Dubai</destino>
+  </vuelo>
+</vuelos>
