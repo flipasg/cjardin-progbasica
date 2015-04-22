@@ -17,92 +17,90 @@ import javax.swing.JTextField;
 
 //Comienza la clase EjemploGUI
 public class EjemploGUI {
-    //Declaramos los componentes que usaremos:
-    JFrame ventana;
-    JLabel etiqueta;
-    JTextField campo;
-    JButton boton;
-    
-    //En el constructor solo llamamos un método:
-    public EjemploGUI(){
-     iniciarGUI();
-    }
-    
-    /**
-     * Método que se encarga de llamar a todos los métodos
-     * encargados de crear la GUI y mostrarla.
-     */
-    public void iniciarGUI(){
-     instanciarGUI();
-     configurarGUI();
-     añadirAGUI();
-     oyentesGUI();
-     //La ventana se muestra al llamar este método:
-     ventana.setVisible(true);
-    }
-    
-    /**
-     * Se encarga de instanciar cada componente que va en 
-     * nuestra GUI.
-     */
-    private void instanciarGUI() {
-     ventana = new JFrame("Ejemplo GUI #3");
-     etiqueta = new JLabel("Etiqueta de ejemplo #3");
-     campo = new JTextField(10);
-     boton = new JButton("Botón De Ejemplo #3");
-    }
-    
-    /**
-     * Se encarga de configurar a todos los componentes,
-     * como por ejemplo dar color a un boton o campo, cambiar
-     * tamaños etc.
-     */
-    private void configurarGUI() {
-     //Ponemos una acción de cerrado por default (salir en este caso):
-     ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     //Ponemos el layout:
-     ventana.setLayout(new FlowLayout());
-    }
-    
-    /**
-     * Se encarga de añadir cualquier componente en la GUI.
-     */
-    private void añadirAGUI() {
-     ventana.add(etiqueta);
-     ventana.add(campo); 
-     ventana.add(boton);
-     //Se llama a pack después de haber agregado componenetes a la ventana
-     ventana.pack();
-    }
-    
-    /**
-     * Se encarga de añadir los oyentes, ya sea de mouse,
-     * teclado o similares.
-     */
-    private void oyentesGUI() {
-     
-     //Ejemplo de como añadir un oyente de acción a un botón:
-     boton.addActionListener(new ActionListener(){
-      public void actionPerformed(ActionEvent e) {
-       //Ponemos aquí las acciones a realizar si damos click al botón:
-       accionesBotón();
-      }});
-    }
-    
-    /**
-     * Método encargado de dar un mensaje:
-     */
-    private void accionesBotón(){
-     JOptionPane.showMessageDialog(null, "Has dado click en el botón");
-    }
-    
-    public void llenarCampo(String texto){
-     campo.setText(texto);
-    }
-    
-    public static void main(String[] args){
-     //Llamamos a una nueva instancia de la clase y a un método en la misma:
-     new EjemploGUI().llenarCampo("¡Hola mundo!");
-    }
-    
-   }
+	// Declaramos los componentes que usaremos:
+	JFrame ventana;
+	JLabel etiqueta;
+	JTextField campo;
+	JButton boton;
+
+	// En el constructor solo llamamos un mï¿½todo:
+	public EjemploGUI() {
+		iniciarGUI();
+	}
+
+	/**
+	 * Mï¿½todo que se encarga de llamar a todos los mï¿½todos encargados de crear
+	 * la GUI y mostrarla.
+	 */
+	public void iniciarGUI() {
+		instanciarGUI();
+		configurarGUI();
+		aÃ±adirAGUI();
+		oyentesGUI();
+		// La ventana se muestra al llamar este mï¿½todo:
+		ventana.setVisible(true);
+	}
+
+	/**
+	 * Se encarga de instanciar cada componente que va en nuestra GUI.
+	 */
+	private void instanciarGUI() {
+		ventana = new JFrame("Ejemplo GUI #3");
+		etiqueta = new JLabel("Etiqueta de ejemplo #3");
+		campo = new JTextField(10);
+		boton = new JButton("Botï¿½n De Ejemplo #3");
+	}
+
+	/**
+	 * Se encarga de configurar a todos los componentes, como por ejemplo dar
+	 * color a un boton o campo, cambiar tamaï¿½os etc.
+	 */
+	private void configurarGUI() {
+		// Ponemos una acciï¿½n de cerrado por default (salir en este caso):
+		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// Ponemos el layout:
+		ventana.setLayout(new FlowLayout());
+	}
+
+	/**
+	 * Se encarga de aï¿½adir cualquier componente en la GUI.
+	 */
+	private void aÃ±adirAGUI() {
+		ventana.add(etiqueta);
+		ventana.add(campo);
+		ventana.add(boton);
+		// Se llama a pack despuï¿½s de haber agregado componenetes a la ventana
+		ventana.pack();
+	}
+
+	/**
+	 * Se encarga de aï¿½adir los oyentes, ya sea de mouse, teclado o similares.
+	 */
+	private void oyentesGUI() {
+
+		// Ejemplo de como aï¿½adir un oyente de acciï¿½n a un botï¿½n:
+		boton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Ponemos aquï¿½ las acciones a realizar si damos click al botï¿½n:
+				accionesBotÃ³n();
+			}
+		});
+	}
+
+	/**
+	 * Mï¿½todo encargado de dar un mensaje:
+	 */
+	private void accionesBotÃ³n() {
+		JOptionPane.showMessageDialog(null, "Has dado click en el botï¿½n");
+	}
+
+	public void llenarCampo(String texto) {
+		campo.setText(texto);
+	}
+
+	public static void main(String[] args) {
+		// Llamamos a una nueva instancia de la clase y a un mï¿½todo en la misma:
+		new EjemploGUI().llenarCampo("ï¿½Hola mundo!");
+	}
+
+}

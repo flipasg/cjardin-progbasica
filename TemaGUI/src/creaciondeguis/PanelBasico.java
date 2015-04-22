@@ -9,22 +9,22 @@ import javax.swing.JPanel;
 
 //Comienza la clase PanelBasico
 public abstract class PanelBasico extends JPanel implements GUIBasica {
-    
-    /**
-     * Contructor de la clase PanelBasico
-     */
-    public PanelBasico() {
-	super();
-	iniciarGUI();
-    }
-    
-    /**
-     * Método : iniciarGUI
-     */
-    public void iniciarGUI() {
-	instanciarGUI();
-	configurarGUI();
-	anadirAGUI();
-	oyentesGUI();
-    }
+
+	/**
+	 * Contructor de la clase PanelBasico
+	 */
+	public PanelBasico() {
+		super();
+		iniciarGUI();
+	}
+
+	/**
+	 * Mï¿½todo : iniciarGUI
+	 */
+	public void iniciarGUI() {
+		instanciarGUI();
+		configurarGUI();
+		anadirAGUI();
+		oyentesGUI();
+	}
 }

@@ -9,31 +9,31 @@ import javax.swing.JDialog;
 
 //Comienza la clase DialogoBasico
 public abstract class DialogoBasico extends JDialog implements GUIBasica {
-    
-    /**
-     * Método : DialogoBásico
-     * @param titulo
-     */
-    public DialogoBasico(String titulo){
-	super();
-	iniciarGUI();
-	this.setTitle(titulo);
-    }
-    
 
-    /**
-     * Método : iniciarGUI
-     */
-    public void iniciarGUI(){
-	instanciarGUI();
-	configurarGUI();
-	anadirAGUI();
-	oyentesGUI();
-	configDialogo();
-    }
-    
-    /**
-     * Método : configDialogo
-     */
-    public abstract void configDialogo();
-   }
+	/**
+	 * Mï¿½todo : DialogoBï¿½sico
+	 * 
+	 * @param titulo
+	 */
+	public DialogoBasico(String titulo) {
+		super();
+		iniciarGUI();
+		this.setTitle(titulo);
+	}
+
+	/**
+	 * Mï¿½todo : iniciarGUI
+	 */
+	public void iniciarGUI() {
+		instanciarGUI();
+		configurarGUI();
+		anadirAGUI();
+		oyentesGUI();
+		configDialogo();
+	}
+
+	/**
+	 * Mï¿½todo : configDialogo
+	 */
+	public abstract void configDialogo();
+}

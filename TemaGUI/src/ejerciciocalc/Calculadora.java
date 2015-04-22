@@ -9,7 +9,7 @@ package ejerciciocalc;
 public class Calculadora {
 
     /**
-     * Método : suma
+     * Mï¿½todo : suma
      * @param numero1
      * @param numero2
      * @return la suma
@@ -19,7 +19,7 @@ public class Calculadora {
     }
     
     /**
-     * Método : resta
+     * Mï¿½todo : resta
      * @param numero1
      * @param numero2
      * @return la resta
@@ -29,23 +29,22 @@ public class Calculadora {
     }
     
     /**
-     * Método : multiplicacion
+     * Mï¿½todo : multiplicacion
      * @param numero1
      * @param numero2
-     * @return la multiplicación
+     * @return la multiplicaciï¿½n
      */
     public Double multiplicacion(double numero1, double numero2) {
 	return numero1*numero2;
     }
     
     /**
-     * Método : division
+     * Mï¿½todo : division
      * @param numero1
      * @param numero2
-     * @return la división
+     * @return la divisiï¿½n
      */
     public Double division(double numero1, double numero2) {
 	return numero1/numero2;
     }
-    
 }

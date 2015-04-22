@@ -7,8 +7,11 @@ package creaciondeguis;
 
 //Comienza la clase GUIBasica
 public interface GUIBasica {
-    void instanciarGUI();
-    void configurarGUI();
-    void anadirAGUI();
-    void oyentesGUI();
+	void instanciarGUI();
+
+	void configurarGUI();
+
+	void anadirAGUI();
+
+	void oyentesGUI();
 }
