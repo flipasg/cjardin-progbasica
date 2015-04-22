@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vuelos>
   <vuelo id="0090">
-    <origen>Bilbao</origen>
-    <destino>Madrid</destino>
+    <origen salida="22:30:13 22/5">Bilbao</origen>
+    <destino llegada="22:30:13 22/5">Madrid</destino>
   </vuelo>
   <vuelo id="0091">
-    <origen>Bilbao</origen>
-    <destino>Vitoria-Gasteiz</destino>
+    <origen salida="22:30:13 22/5">Bilbao</origen>
+    <destino llegada="22:30:13 22/5">Vitoria-Gasteiz</destino>
   </vuelo>
   <vuelo id="0092">
-    <origen>Vitoria-Gasteiz</origen>
-    <destino>Madrid</destino>
+    <origen salida="22:30:13 22/5">Vitoria-Gasteiz</origen>
+    <destino llegada="22:30:13 22/5">"Madrid</destino>
   </vuelo>
   <vuelo id="0093">
-    <origen>Bilbao</origen>
-    <destino>Malaga</destino>
+    <origen salida="22:30:13 22/5">Bilbao</origen>
+    <destino llegada="22:30:13 22/5">Malaga</destino>
   </vuelo>
   <vuelo id="0094">
-    <origen>Sevilla</origen>
-    <destino>Madrid</destino>
+    <origen salida="22:30:13 22/5">Sevilla</origen>
+    <destino llegada="22:30:13 22/5">Madrid</destino>
   </vuelo>
   <vuelo id="0095">
-    <origen>Vitoria-Gasteiz</origen>
-    <destino>Pekin</destino>
+    <origen salida="22:30:13 22/5">Vitoria-Gasteiz</origen>
+    <destino llegada="22:30:13 22/5">Pekin</destino>
   </vuelo>
   <vuelo id="0096">
-    <origen>Bilbao</origen>
-    <destino>Dubai</destino>
+    <origen salida="22:30:13 22/5">Bilbao</origen>
+    <destino llegada="22:30:13 22/5">Dubai</destino>
   </vuelo>
 </vuelos>

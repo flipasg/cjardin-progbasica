@@ -1,7 +1,5 @@
 /**
- * XML - ejemplo4 : CrearVentana.java
- * @author Ikk
- * @date 22/4/2015
+ *
  */
 package ejemplo4;
 
@@ -9,14 +7,16 @@ import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
 
-//Comienza la clase CrearVentana
-public class CrearVentana extends JFrame implements ICrearGUI{
-    
-    
-    
-    
+/**
+ * @author Iker Garcia Ramirez
+ * @date 23/4/2015
+ *
+ */
+public class CrearVentana extends JFrame implements ICrearGUI {
+
     /**
      * Constructor de la clase CrearVentana
+     * 
      * @param titulo
      * @throws HeadlessException
      */
@@ -24,7 +24,10 @@ public class CrearVentana extends JFrame implements ICrearGUI{
 	super(titulo);
 	iniciar();
     }
-    
+
+    /**
+     *
+     */
     private void iniciar() {
 	instanciar();
 	configurar();
@@ -33,39 +36,49 @@ public class CrearVentana extends JFrame implements ICrearGUI{
 	propiedades();
     }
 
-    /**
-     * Metodo sobreescrito : instanciar
+    /*
+     * (non-Javadoc)
+     * 
      * @see ejemplo4.ICrearGUI#instanciar()
      */
     @Override
-    public void instanciar() {}
+    public void instanciar() {
+    }
 
-    /**
-     * Metodo sobreescrito : configurar
+    /*
+     * (non-Javadoc)
+     * 
      * @see ejemplo4.ICrearGUI#configurar()
      */
     @Override
-    public void configurar() {}
+    public void configurar() {
+    }
 
-    /**
-     * Metodo sobreescrito : oyentes
+    /*
+     * (non-Javadoc)
+     * 
      * @see ejemplo4.ICrearGUI#oyentes()
      */
     @Override
-    public void oyentes() {}
+    public void oyentes() {
+    }
 
-    /**
-     * Metodo sobreescrito : propiedades
+    /*
+     * (non-Javadoc)
+     * 
      * @see ejemplo4.ICrearGUI#propiedades()
      */
     @Override
-    public void propiedades() {}
+    public void propiedades() {
+    }
 
-    /**
-     * Metodo sobreescrito : aniadir
+    /*
+     * (non-Javadoc)
+     * 
      * @see ejemplo4.ICrearGUI#aniadir()
      */
     @Override
-    public void aniadir() {}
+    public void aniadir() {
+    }
 
 }

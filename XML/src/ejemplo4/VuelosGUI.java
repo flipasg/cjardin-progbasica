@@ -1,29 +1,31 @@
-/**
- * XML - ejemplo4 : VuelosGUI.java
- * @author Ikk
- * @date 22/4/2015
- */
 package ejemplo4;
 
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-import org.jdom2.Element;
 import org.jdom2.JDOMException;
 
-import ejemplo3.GestorVuelos;
-
-//Comienza la clase VuelosGUI
-public class VuelosGUI extends CrearVentana {
+/**
+ * @author Iker Garcia Ramirez
+ * @date 22/4/2015
+ *
+ */
+public class VuelosGUI extends CrearVentana implements ActionListener {
     private static final String FICHERO = "vuelos.xml";
     private JLabel origenEtiqueta, destinoEtiqueta;
-    JComboBox<String> origenCombo;
-    private JComboBox<Element> destinoCombo;
+    private JList<String> origenLista, destinoLista;
     private JButton comprar;
     private GestorVuelos gv;
 
@@ -38,9 +40,9 @@ public class VuelosGUI extends CrearVentana {
 
     }
 
-    /**
-     * Metodo sobreescrito : instanciar
-     * 
+    /*
+     * (non-Javadoc)
+     *
      * @see ejemplo4.CrearVentana#instanciar()
      */
     @Override
@@ -49,50 +51,108 @@ public class VuelosGUI extends CrearVentana {
 	    gv = new GestorVuelos(FICHERO);
 	    origenEtiqueta = new JLabel("ORIGEN");
 	    destinoEtiqueta = new JLabel("DESTINO");
-	    origenCombo = new JComboBox<>(gv.obtenerOrigenesDistintos());
-	} catch (JDOMException e) {  
-	} catch (IOException e) {}
+	    origenLista = new JList<String>(gv.obtenerOrigenesDistintos());
+	    destinoLista = new JList<String>();
+	    comprar = new JButton("COMPRAR");
+
+	} catch (JDOMException e) {
+	} catch (IOException e) {
+	}
 
     }
-    /**
-     * Metodo sobreescrito : aniadir
-     * @see ejemplo4.CrearVentana#aniadir()
-     */
-    @Override
-    public void aniadir() {
-        add(origenCombo);
-    }
-    /**
-     * Metodo sobreescrito : configurar
-     * 
+
+    /*
+     * (non-Javadoc)
+     *
      * @see ejemplo4.CrearVentana#configurar()
      */
     @Override
     public void configurar() {
+	setLayout(new GridBagLayout());
 	setSize(new Dimension(500, 500));
     }
 
-    /**
-     * Metodo sobreescrito : oyentes
-     * 
-     * @see ejemplo4.CrearVentana#oyentes()
+    /*
+     * (non-Javadoc)
+     *
+     * @see ejemplo4.CrearVentana#aniadir()
      */
     @Override
+    public void aniadir() {
+	// propiedades del GridBagLayout
+	GridBagConstraints gbc = new GridBagConstraints();
+	gbc.insets = new Insets(1, 1, 1, 1); // margen entre componentes
+
+	gbc.gridy = 0;
+	gbc.gridx = 0;
+	add(origenEtiqueta, gbc);
+
+	gbc.gridy = 0;
+	gbc.gridx = 2;
+	add(destinoEtiqueta, gbc);
+
+	gbc.gridy = 1;
+	gbc.gridx = 0;
+	add(origenLista, gbc);
+
+	gbc.gridy = 1;
+	gbc.gridx = 2;
+	add(destinoLista, gbc);
+
+	gbc.gridy = 2;
+	gbc.gridx = 1;
+	add(comprar, gbc);
+    }
+
+    @Override
     public void oyentes() {
+	destinoLista.addListSelectionListener(new ListSelectionListener() {
+
+	    /*
+	     * (non-Javadoc)
+	     * 
+	     * @see
+	     * javax.swing.event.ListSelectionListener#valueChanged(javax.swing
+	     * .event.ListSelectionEvent)
+	     */
+	    @Override
+	    public void valueChanged(ListSelectionEvent e) {
+		destinoLista.setListData(gv.obtenerDestinos(origenLista
+			.getSelectedValue()));
+		pack();
+	    }
+	});
 
     }
 
-    /**
-     * Metodo sobreescrito : propiedades
-     * 
+    /*
+     * (non-Javadoc)
+     *
      * @see ejemplo4.CrearVentana#propiedades()
      */
     @Override
     public void propiedades() {
 	setResizable(false);
 	setVisible(true);
+	pack();
     }
-    
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+     */
+    @Override
+    public void actionPerformed(ActionEvent e) {
+	if (e.getSource() == comprar) {
+
+	}
+    }
+
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
 	new VuelosGUI("Ikk Viajes");
     }
