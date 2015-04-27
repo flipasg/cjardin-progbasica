@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+  <comida>
+    <nombre>Ensalada Cesar</nombre>
+    <precio>4.5</precio>
+    <descripcion>Ensalada con lechuga y croutons</descripcion>
+    <calorias>650</calorias>
+  </comida>
+  <comida>
+    <nombre>Ensalada Cesar</nombre>
+    <precio>4.5</precio>
+    <descripcion>Ensalada con lechuga y croutons</descripcion>
+    <calorias>650</calorias>
+  </comida>
+  <comida>
+    <nombre>Chicken Burger</nombre>
+    <precio>3.5</precio>
+    <descripcion>Hamburguesa de pollo</descripcion>
+    <calorias>400</calorias>
+  </comida>
+  <comida>
+    <nombre>Fabada</nombre>
+    <precio>7.8</precio>
+    <descripcion>Cocido de alubias blancas con embutido</descripcion>
+    <calorias>520</calorias>
+  </comida>
+</menu>
