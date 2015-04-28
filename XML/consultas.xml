@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<consultas>
+  <medico nombre="Dra. Kholn" />
+  <medico nombre="Dr. Saez" />
+  <medico nombre="Dra. Artea" />
+  <medico nombre="Dr. Cabeza" />
+</consultas>
