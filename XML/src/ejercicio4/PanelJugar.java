@@ -15,7 +15,7 @@ public class PanelJugar extends PanelBasico {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see ejercicio4.PanelBasico#instanciar()
      */
     @Override
@@ -25,7 +25,7 @@ public class PanelJugar extends PanelBasico {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see ejercicio4.PanelBasico#aniadir()
      */
     @Override
@@ -35,16 +35,7 @@ public class PanelJugar extends PanelBasico {
 
     /*
      * (non-Javadoc)
-     * 
-     * @see ejercicio4.PanelBasico#oyentes()
-     */
-    @Override
-    public void oyentes() {
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
+     *
      * @see ejercicio4.PanelBasico#propFinales()
      */
     @Override

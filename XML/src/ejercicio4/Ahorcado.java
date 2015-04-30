@@ -13,10 +13,10 @@ import org.jdom2.JDOMException;
  *
  */
 public class Ahorcado {
-    private String palabraAAdivinar;
-    private String respuesta;
-    private int totalDeVidas;
-    private int vidasRestantes;
+    private String palabraAAdivinar; // palabra que se debe adivinar
+    private String respuesta; // String con el avance del jugador
+    private int totalDeVidas; // total de vidas del jugador
+    private int vidasRestantes; // vidas restantes del jugador
 
     /**
      * Constructor de la clase Ahorcado
@@ -27,7 +27,7 @@ public class Ahorcado {
      * @param vidasRestantes
      */
     public Ahorcado() {
-	palabraAAdivinar = "cristalera";
+	palabraAAdivinar = "cristalera"; // palabra por defecto
 	iniciar();
     }
 
@@ -40,7 +40,9 @@ public class Ahorcado {
      * @throws AhorcadoException
      */
     public Ahorcado(int n) throws JDOMException, IOException, AhorcadoException {
+	// obtenemos la instancia del GestorXML
 	GestorXML gx = GestorXML.obtenerInstancia();
+	// obtenemos una palabra de la longitud especificada
 	palabraAAdivinar = gx.palabraDeLongitud(n);
 	iniciar();
 
@@ -51,14 +53,24 @@ public class Ahorcado {
      *
      */
     public void iniciar() {
-	establecerRespuesta();
+	establecerRespuesta(); // establecemos la respuesta
+	// el totalDeVidas es igual a la mitad de los caracteres distintos
 	int tVidas = palabraAAdivinar.length() - contarLetrasDistintas();
 	totalDeVidas = tVidas / 2;
+	// si los caracteres distintos son impares sumamos uno al numero de
+	// fallos posibles
 	if (tVidas % 2 != 0)
 	    totalDeVidas++;
+
+	// las vidas restantes empiezan con el total de vidas posibles
 	vidasRestantes = totalDeVidas;
     }
 
+    /**
+     * Establece la respuesta por defecto ('-' con longitud de la palabra a
+     * adivinar)
+     *
+     */
     public void establecerRespuesta() {
 	respuesta = "";
 	for (int i = 0; i < palabraAAdivinar.length(); i++) {
@@ -67,7 +79,7 @@ public class Ahorcado {
     }
 
     /**
-     * Cuenta cuantas veces aparece un caracter
+     * Cuenta cuantas veces aparece un caracter repetido
      *
      * @param c
      * @return el numero de ocurrencias del caracter
@@ -85,33 +97,13 @@ public class Ahorcado {
     }
 
     /**
+     * Se encarga de reemplazar un caracter concreto en una cadena de caracteres
+     *
      * @param str
      * @param c
      * @return la cadena con el caracter reemplazado
      */
     private String reemplazarCaracter(String str, char c) {
-	StringBuilder sb = new StringBuilder(str);
-	int indiceLetraAcertada = palabraAAdivinar.indexOf(c);
-	while (indiceLetraAcertada != -1) {
-	    sb.deleteCharAt(indiceLetraAcertada);
-	    sb.insert(indiceLetraAcertada, c);
-	    indiceLetraAcertada = palabraAAdivinar.indexOf(c,
-		    indiceLetraAcertada + 1);
-	}
-
-	return sb.toString();
-    }
-
-    /**
-     * @param c
-     * @return si se ha acertado o no con la letra
-     */
-    public boolean tirar(char c) {
-
-	if (c <= 'Z' && c >= 'A') {
-	    c = (char) (c - ('A' - 'a'));
-	}
-
 	// si no se quiere usar StringBuilder:
 	// se deberia realizar el mismo proceso pero concatenando
 	// hasta la primera ocurrencia '-', luego el caracter
@@ -120,18 +112,75 @@ public class Ahorcado {
 
 	// StringBuilder es una clase de Java que crea una Secuencia de
 	// caracteres MUTABLE, recordemos que un String es INMUTABLE
+	StringBuilder sb = new StringBuilder(str);
+	// obtenemos el primer indicie del caracter que nos pasan como parametro
+	// el metodo indexOf devuelve -1 si no existe
 	int indiceLetraAcertada = palabraAAdivinar.indexOf(c);
-	if (indiceLetraAcertada == -1) {
-	    vidasRestantes--;
-	    return false;
+	while (indiceLetraAcertada != -1) { // mientras exista
+	    // borramos el caracter(-)
+	    sb.deleteCharAt(indiceLetraAcertada);
+	    // insteramoc el caracter (el que nos pasan como parametro)
+	    sb.insert(indiceLetraAcertada, c);
+	    // obtenemos el indice de la siguiente ocurrencia del caracter
+	    indiceLetraAcertada = palabraAAdivinar.indexOf(c,
+		    indiceLetraAcertada + 1);
 	}
+
+	// devolvemos el String resultante
+	return sb.toString();
+    }
+
+    /**
+     * Se encarga de realizar la tirada de un caracter
+     *
+     * @param c
+     * @return si se ha acertado o no con la letra
+     */
+    public boolean tirar(char c) {
+
+	// si la letra es mayuscula la pasamos a minuscula
+	// los char son tratados como numeros ascii
+	// la resta A - a, da el numero de posiciones que hay entre una
+	// mayuscula y una minuscula cualquiera
+
+	if (c <= 'Z' && c >= 'A') {
+	    c = (char) (c - ('A' - 'a'));
+	}
+
+	// obtenemos el primer indice del caracter
+	int indiceLetraAcertada = palabraAAdivinar.indexOf(c);
+	if (indiceLetraAcertada == -1) { // si no existe en la cadena
+	    vidasRestantes--; // restamos una vida
+	    return false; // devolvemos falso
+	}
+
+	// si existe reemplazamos el caracter
 	respuesta = reemplazarCaracter(respuesta, c);
 
+	// devolvemos verdadero
 	return true;
     }
 
     /**
-     * @return the palabraAAdivinar
+     * Veremos la respuesta con un espacio entre caracteres
+     *
+     * @return la respuesta
+     */
+    public String verRespuesta() {
+	String respuestaConEspacios = "";
+	for (int i = 0; i < respuesta.length(); i++) {
+	    respuestaConEspacios += respuesta.charAt(i) + " ";
+	}
+
+	// el método trim() devuelve un String
+	// si no lo asignamos no devolveremos la cadena "trimeada"
+	respuestaConEspacios = respuestaConEspacios.trim();
+
+	return respuestaConEspacios;
+    }
+
+    /**
+     * @return la palabraAAdivinar
      */
     public String getPalabraAAdivinar() {
 	return palabraAAdivinar;
@@ -171,19 +220,4 @@ public class Ahorcado {
 	return vidasRestantes;
     }
 
-    /**
-     * @return la respuesta
-     */
-    public String verRespuesta() {
-	String respuestaConEspacios = "";
-	for (int i = 0; i < respuesta.length(); i++) {
-	    respuestaConEspacios += respuesta.charAt(i) + " ";
-	}
-
-	// el método trim() devuelve un String
-	// si no lo asignamos no devolveremos la cadena "trimeada"
-	respuestaConEspacios = respuestaConEspacios.trim();
-
-	return respuestaConEspacios;
-    }
 }

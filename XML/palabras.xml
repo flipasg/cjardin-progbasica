@@ -8,7 +8,7 @@
   </grupo>
   <grupo numletras="5">
     <pal aciertos="1">coche</pal>
-    <pal aciertos="1">raton</pal>
+    <pal aciertos="2">raton</pal>
   </grupo>
   <grupo numletras="6">
     <pal>cuadro</pal>
@@ -24,6 +24,6 @@
   <grupo numletras="9">
     <pal>ensamblar</pal>
     <pal>perpetuar</pal>
-    <pal>impresora</pal>
+    <pal aciertos="1">impresora</pal>
   </grupo>
 </ahorcado>

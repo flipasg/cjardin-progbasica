@@ -14,19 +14,19 @@ import javax.swing.JButton;
  */
 public class PanelAlfabeto extends PanelBasico {
     private static final JButton[] BOTONES = { new JButton("A"),
-	    new JButton("B"), new JButton("C"), new JButton("D"),
-	    new JButton("E"), new JButton("F"), new JButton("G"),
-	    new JButton("H"), new JButton("I"), new JButton("J"),
-	    new JButton("K"), new JButton("L"), new JButton("M"),
-	    new JButton("N"), new JButton("O"), new JButton("P"),
-	    new JButton("Q"), new JButton("R"), new JButton("S"),
-	    new JButton("T"), new JButton("U"), new JButton("V"),
-	    new JButton("W"), new JButton("X"), new JButton("Y"),
-	    new JButton("Z") };
+	new JButton("B"), new JButton("C"), new JButton("D"),
+	new JButton("E"), new JButton("F"), new JButton("G"),
+	new JButton("H"), new JButton("I"), new JButton("J"),
+	new JButton("K"), new JButton("L"), new JButton("M"),
+	new JButton("N"), new JButton("O"), new JButton("P"),
+	new JButton("Q"), new JButton("R"), new JButton("S"),
+	new JButton("T"), new JButton("U"), new JButton("V"),
+	new JButton("W"), new JButton("X"), new JButton("Y"),
+	new JButton("Z") };
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see ejercicio4.PanelBasico#configurar()
      */
     @Override
@@ -36,7 +36,7 @@ public class PanelAlfabeto extends PanelBasico {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see ejercicio4.PanelBasico#aniadir()
      */
     @Override
@@ -48,17 +48,7 @@ public class PanelAlfabeto extends PanelBasico {
 
     /*
      * (non-Javadoc)
-     * 
-     * @see ejercicio4.PanelBasico#oyentes()
-     */
-    @Override
-    public void oyentes() {
-	super.oyentes();
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
+     *
      * @see ejercicio4.PanelBasico#propFinales()
      */
     @Override

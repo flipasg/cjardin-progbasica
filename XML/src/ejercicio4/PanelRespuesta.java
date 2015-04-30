@@ -17,7 +17,7 @@ public class PanelRespuesta extends PanelBasico {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see ejercicio4.PanelBasico#instanciar()
      */
     @Override
@@ -34,7 +34,7 @@ public class PanelRespuesta extends PanelBasico {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see ejercicio4.PanelBasico#configurar()
      */
     @Override
@@ -44,7 +44,7 @@ public class PanelRespuesta extends PanelBasico {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see ejercicio4.PanelBasico#aniadir()
      */
     @Override
@@ -54,17 +54,7 @@ public class PanelRespuesta extends PanelBasico {
 
     /*
      * (non-Javadoc)
-     * 
-     * @see ejercicio4.PanelBasico#oyentes()
-     */
-    @Override
-    public void oyentes() {
-	super.oyentes();
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
+     *
      * @see ejercicio4.PanelBasico#propFinales()
      */
     @Override

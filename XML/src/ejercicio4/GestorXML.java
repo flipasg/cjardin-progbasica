@@ -41,7 +41,7 @@ public class GestorXML {
     }
 
     /**
-     * Devuelve la instancia del GestorXML Para instanciar un Gestor hay que
+     * Devuelve la instancia del GestorXML para instanciar un Gestor hay que
      * llamar a este metodo
      *
      * @return la instancia
@@ -49,7 +49,7 @@ public class GestorXML {
      * @throws JDOMException
      */
     public static GestorXML obtenerInstancia() throws JDOMException,
-	    IOException {
+    IOException {
 	if (instancia == null)
 	    instancia = new GestorXML();
 
@@ -57,6 +57,8 @@ public class GestorXML {
     }
 
     /**
+     * Parsea el documento XML
+     *
      * @throws JDOMException
      * @throws IOException
      */
@@ -66,6 +68,8 @@ public class GestorXML {
     }
 
     /**
+     * Se encarga de buscar la palabra de una longitud concreta
+     *
      * @param n
      * @return la palabra de longitud n
      * @throws AhorcadoException
@@ -102,6 +106,8 @@ public class GestorXML {
     }
 
     /**
+     * Se encarga de aniadir el atributo acierto a la palabra acertada
+     *
      * @param palabra
      * @param n
      * @throws IOException
@@ -115,14 +121,20 @@ public class GestorXML {
 	    if (Integer.parseInt(e.getAttributeValue("numletras")) == n) {
 		// listamos las palabras
 		List<Element> listaPalabras = e.getChildren();
+		// recorremos las palabras
 		for (Element e1 : listaPalabras) {
+		    // si la palabra es la se nos pasa como parametro
 		    if (e1.getText().equals(palabra)) {
+			// si tiene atributos
 			if (e1.hasAttributes()) {
+			    // establecemos el atributo al valor del atributo
+			    // mas uno
 			    e1.setAttribute(
 				    "aciertos",
-				    Integer.toString(Integer.parseInt(e
+				    Integer.toString(Integer.parseInt(e1
 					    .getAttributeValue("aciertos")) + 1));
-			} else {
+			} else { // si no
+				 // establecemos el atributo (nuevo) a uno
 			    e1.setAttribute("aciertos", "1");
 			}
 		    }
