@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ahorcado>
+  <grupo numletras="4">
+    <pal>gato</pal>
+    <pal>casa</pal>
+    <pal>pato</pal>
+    <pal>maiz</pal>
+  </grupo>
+  <grupo numletras="5">
+    <pal aciertos="1">coche</pal>
+    <pal aciertos="1">raton</pal>
+  </grupo>
+  <grupo numletras="6">
+    <pal>cuadro</pal>
+    <pal>ladron</pal>
+    <pal>molino</pal>
+    <pal>madera</pal>
+    <pal>accion</pal>
+  </grupo>
+  <grupo numletras="7">
+    <pal>retrato</pal>
+    <pal>naranja</pal>
+  </grupo>
+  <grupo numletras="9">
+    <pal>ensamblar</pal>
+    <pal>perpetuar</pal>
+    <pal>impresora</pal>
+  </grupo>
+</ahorcado>
