@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<platos>
+	<plato tipo="primero" nombre="Macarrones">
+		<precio>7.4</precio>
+		<imagen>macarrones.jpg</imagen>
+	</plato>
+	<plato tipo="principal" nombre="Costilla">
+		<precio>12.7</precio>
+		<imagen>costilla.jpg</imagen>
+	</plato>
+	<plato tipo="primero" nombre="Arroz">
+		<precio>6.2</precio>
+		<imagen>arroz.jpg</imagen>
+	</plato>
+	<plato tipo="adicional" nombre="Cafe">
+		<precio>1.1</precio>
+	</plato>
+	<plato tipo="principal" nombre="Merluza">
+		<precio>10</precio>
+		<imagen>merluza.jpg</imagen>
+	</plato>
+	<plato tipo="principal" nombre="Pollo">
+		<precio>11.1</precio>
+		<imagen>pollo.jpg</imagen>
+	</plato>
+	<plato tipo="adicional" nombre="Helado">
+		<precio>2</precio>
+	</plato>
+	<plato tipo="adicional" nombre="Tarta">
+		<precio>3</precio>
+	</plato>
+	<plato tipo="adicional" nombre="Fruta">
+		<precio>1</precio>
+	</plato>
+</platos>

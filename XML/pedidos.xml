@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raiz>
+  <pedidos fecha="1-4">
+    <pedido>
+      <primero>Macarrones</primero>
+      <principal>Costilla</principal>
+      <adicionales>
+        <adicional>Cafe</adicional>
+      </adicionales>
+    </pedido>
+    <pedido>
+      <primero>Macarrones</primero>
+      <principal>Merluza</principal>
+    </pedido>
+    <pedido>
+      <primero>Arroz</primero>
+      <principal>Pollo</principal>
+      <adicionales>
+        <adicional>Cafe</adicional>
+        <adicional>Helado</adicional>
+        <adicional>Tarta</adicional>
+        <adicional>Fruta</adicional>
+      </adicionales>
+    </pedido>
+    <pedido>
+      <primero>Macarrones</primero>
+      <principal>Merluza</principal>
+      <adicionales>
+        <adicional>Helado</adicional>
+      </adicionales>
+    </pedido>
+  </pedidos>
+</raiz>
