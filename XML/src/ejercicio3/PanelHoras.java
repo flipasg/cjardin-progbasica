@@ -28,7 +28,7 @@ public class PanelHoras extends PanelBasico {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see ejercicio3.PanelBasico#instanciar()
      */
     @Override
@@ -52,7 +52,7 @@ public class PanelHoras extends PanelBasico {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see ejercicio3.PanelBasico#configurar()
      */
     @Override
@@ -63,7 +63,7 @@ public class PanelHoras extends PanelBasico {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see ejercicio3.PanelBasico#aniadir()
      */
     @Override
@@ -74,7 +74,7 @@ public class PanelHoras extends PanelBasico {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see ejercicio3.PanelBasico#propFinales()
      */
     @Override

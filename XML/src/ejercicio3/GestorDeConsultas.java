@@ -5,6 +5,7 @@ package ejercicio3;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * @author Iker Garcia Ramirez
@@ -51,6 +52,14 @@ public class GestorDeConsultas {
 	for (int i = 0; i < MEDICOS.length; i++) {
 	    consultas.put(MEDICOS[i], new ArrayList<Consulta>());
 	}
+    }
+
+    /**
+     * @param consultas
+     *            the consultas to set
+     */
+    public void setConsultas(HashMap<Medico, ArrayList<Consulta>> consultas) {
+	this.consultas = consultas;
     }
 
     /**
@@ -116,8 +125,12 @@ public class GestorDeConsultas {
      */
     public boolean hayConsulta(Medico m, HoraConsulta h) {
 	ArrayList<Consulta> consultasMedico = consultas.get(m);
+	for (Iterator<Consulta> it = consultasMedico.iterator(); it.hasNext();) {
+	    Consulta c = it.next();
+	    System.out.println(c.getHora());
+	}
 	for (Consulta c : consultasMedico) {
-	    if (c.getHora().equals(h))
+	    if (c.getHora().toString().equals(h.toString()))
 		return true;
 	}
 

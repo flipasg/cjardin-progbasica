@@ -53,7 +53,7 @@ public class GestorXML {
      * @throws JDOMException
      */
     public static GestorXML obtenerInstancia() throws JDOMException,
-    IOException, HoraException {
+	    IOException, HoraException {
 	if (instancia == null)
 	    instancia = new GestorXML();
 
@@ -120,25 +120,27 @@ public class GestorXML {
 	    if (listaConsultas.size() > 0) { // si tiene consultas
 		// creamos la consulta partiendo de la informacion que tenemos
 		// en el xml
-		Consulta c = new Consulta(
-			new HoraConsulta(Integer.parseInt(e
-				.getChildText("hora").split(":")[0]),
-				Integer.parseInt(e.getChildText("hora").split(
-					":")[1])), new Paciente(
-						e.getChildText("paciente")));
-
-		// iteramos sobre las claves del HashMap para añadir la
-		// informacion a este
-		for (Iterator<Medico> it = consultas.keySet().iterator(); it
-			.hasNext();) {
-		    Medico mHash = it.next();
-		    if (mHash.equals(m))
-			consultas.get(mHash).add(c);
+		for (Element e1 : listaConsultas) {
+		    Consulta c = new Consulta(
+			    new HoraConsulta(Integer.parseInt(e1.getChildText(
+				    "hora").split(":")[0]), Integer.parseInt(e1
+					    .getChildText("hora").split(":")[1])),
+					    new Paciente(e1.getChildText("paciente")));
+		    // iteramos sobre las claves del HashMap para añadir la
+		    // informacion a este
+		    for (Iterator<Medico> it = consultas.keySet().iterator(); it
+			    .hasNext();) {
+			Medico mHash = it.next();
+			if (mHash.getNombre().equals(m.getNombre()))
+			    consultas.get(mHash).add(c);
+		    }
 		}
 
 	    }
 
 	}
+
+	gdc.setConsultas(consultas);
 
     }
 
@@ -167,15 +169,16 @@ public class GestorXML {
 	// obtenemos las consultas del medico partiendo del HashMap
 	ArrayList<Consulta> consultasMedico = consultas.get(m);
 	for (Consulta c : consultasMedico) { // iteramos sobre las consultas
-
+	    Element co = new Element("consulta");
 	    // creamos los elementos a partir de la informacion del HashMap
 	    Element h = new Element("hora").setText(c.getHora().toString());
 	    Element p = new Element("paciente").setText(c.getPaciente()
 		    .getNombre());
 
 	    // aniadimos los elementos al medico (hora y paciente)
-	    medicoTag.addContent(h);
-	    medicoTag.addContent(p);
+	    co.addContent(h);
+	    co.addContent(p);
+	    medicoTag.addContent(co);
 	}
 
 	// escribimos en el documento

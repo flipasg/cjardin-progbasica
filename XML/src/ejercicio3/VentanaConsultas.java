@@ -38,7 +38,7 @@ public class VentanaConsultas extends VentanaBasica implements ActionListener {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see ejercicio3.VentanaBasica#instanciar()
      */
     @Override
@@ -51,7 +51,7 @@ public class VentanaConsultas extends VentanaBasica implements ActionListener {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see ejercicio3.VentanaBasica#configurar()
      */
     @Override
@@ -62,7 +62,7 @@ public class VentanaConsultas extends VentanaBasica implements ActionListener {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see ejercicio3.VentanaBasica#aniadir()
      */
     @Override
@@ -79,7 +79,7 @@ public class VentanaConsultas extends VentanaBasica implements ActionListener {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see ejercicio3.VentanaBasica#oyentes()
      */
     @Override
@@ -89,7 +89,7 @@ public class VentanaConsultas extends VentanaBasica implements ActionListener {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see ejercicio3.VentanaBasica#propFinales()
      */
     @Override
@@ -100,7 +100,7 @@ public class VentanaConsultas extends VentanaBasica implements ActionListener {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see
      * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
      */
@@ -135,19 +135,22 @@ public class VentanaConsultas extends VentanaBasica implements ActionListener {
 			    "Debe introducir el nombre del paciente", "Error",
 			    JOptionPane.ERROR_MESSAGE);
 		} else { // si se ha escrito el paciente
-			 // recorremos las horas
+		    // recorremos las horas
 		    for (HoraConsulta h : horasSeleccionadas) {
 			// si el medico no tiene una consulta a esa hora
 			if (!gdc.hayConsulta(m, h)) {
 			    // aniadimos la consulta y mostramos un mensaje de
 			    // informacion
 			    gdc.aniadirConsulta(m, p, h);
+
+			    // aniadimos la informacion al XML
+			    gx.aniadir(m);
 			    JOptionPane.showMessageDialog(this,
 				    "CONSULTA ASIGNADA: " + p + " - " + m
-					    + ", " + h, "Asignacion correcta",
+				    + ", " + h, "Asignacion correcta",
 				    JOptionPane.INFORMATION_MESSAGE);
 			} else { // si ya tiene
-				 // mostramos un mensaje de error
+			    // mostramos un mensaje de error
 			    JOptionPane.showMessageDialog(this, "El/la " + m
 				    + " ya tiene una consulta a las " + h,
 				    "Asignacion erronea",
@@ -156,8 +159,6 @@ public class VentanaConsultas extends VentanaBasica implements ActionListener {
 
 		    }
 
-		    // aniadimos la informacion al XML
-		    gx.aniadir(m);
 		}
 
 	    } catch (ConsultaException | IOException | JDOMException
