@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<consultas>
+  <medico nombre="Dr. Cabeza" />
+  <medico nombre="Dra. Artea" />
+  <medico nombre="Dr. Saez">
+    <consulta>
+      <hora>10:30</hora>
+      <paciente>kk</paciente>
+    </consulta>
+  </medico>
+  <medico nombre="Dra. Kholn" />
+</consultas>
