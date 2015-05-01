@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+  <comida precio="4.5">
+    <nombre>Ensalada Cesar</nombre>
+    <descripcion>Ensalada con lechuga y croutons</descripcion>
+  </comida>
+  <comida precio="4.5">
+    <nombre>Ensalada Cesar</nombre>
+    <descripcion>Ensalada con lechuga y croutons</descripcion>
+  </comida>
+  <comida precio="3.5">
+    <nombre>Chicken Burger</nombre>
+    <descripcion>Hamburguesa de pollo</descripcion>
+  </comida>
+</menu>

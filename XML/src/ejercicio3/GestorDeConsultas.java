@@ -5,7 +5,6 @@ package ejercicio3;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /**
  * @author Iker Garcia Ramirez
@@ -14,8 +13,8 @@ import java.util.Iterator;
  */
 public class GestorDeConsultas {
     private static final Medico[] MEDICOS = { new Medico("Dr. Saez"),
-	new Medico("Dra. Artea"), new Medico("Dr. Cabeza"),
-	new Medico("Dra. Kholn") };
+	    new Medico("Dra. Artea"), new Medico("Dr. Cabeza"),
+	    new Medico("Dra. Kholn") };
     // mejor si fuera una constante pero al lanzar una excepcion no me deja
     private HoraConsulta[] horasDisponibles;
     // HashMap para llevar el control de las consultas de cada medico
@@ -125,10 +124,6 @@ public class GestorDeConsultas {
      */
     public boolean hayConsulta(Medico m, HoraConsulta h) {
 	ArrayList<Consulta> consultasMedico = consultas.get(m);
-	for (Iterator<Consulta> it = consultasMedico.iterator(); it.hasNext();) {
-	    Consulta c = it.next();
-	    System.out.println(c.getHora());
-	}
 	for (Consulta c : consultasMedico) {
 	    if (c.getHora().toString().equals(h.toString()))
 		return true;
