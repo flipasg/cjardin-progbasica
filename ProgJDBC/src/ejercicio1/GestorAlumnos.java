@@ -35,6 +35,8 @@ public class GestorAlumnos {
     }
 
     /**
+     * Metodo encargado de conectarse a la base de datos
+     *
      * @param driver
      * @param baseConnection
      * @param database
@@ -46,12 +48,17 @@ public class GestorAlumnos {
      */
     private void connectTo(String driver, String baseConnection,
 	    String database, String host, String user, String password)
-		    throws ClassNotFoundException, SQLException {
+	    throws ClassNotFoundException, SQLException {
 	Class.forName(driver);
 	connection = DriverManager.getConnection(baseConnection + host + "/"
 		+ database, user, password);
     }
 
+    /**
+     * Metodo encargado de crear las tablas necesarias
+     *
+     * @throws SQLException
+     */
     public void crearTablas() throws SQLException {
 	Statement st = connection.createStatement();
 	try {
@@ -82,6 +89,8 @@ public class GestorAlumnos {
     }
 
     /**
+     * Metodo encargado de listar los alumnos
+     *
      * @return la lista de alumnos Alumnos
      * @throws SQLException
      */
@@ -107,6 +116,8 @@ public class GestorAlumnos {
     }
 
     /**
+     * Metodo encargado de buscar un alumno/ciclo
+     *
      * @param dni
      * @return el Ciclo
      * @throws SQLException
@@ -145,6 +156,12 @@ public class GestorAlumnos {
 	return c;
     }
 
+    /**
+     * Metodo encargado de eliminar un alumno
+     *
+     * @param dni
+     * @throws SQLException
+     */
     public void eliminarAlumno(String dni) throws SQLException {
 	Statement st = connection.createStatement();
 	String sql = "delete from alumno where dni='" + dni + "'";
@@ -157,11 +174,22 @@ public class GestorAlumnos {
 	st.close();
     }
 
+    /**
+     * Metodo encargado de preparar la sentencia predefinida
+     *
+     * @throws SQLException
+     */
     public void prepararSentencia() throws SQLException {
 	insertStatment = connection
 		.prepareStatement("insert into alumno values (?, ?, ?, ?, ?, ?)");
     }
 
+    /**
+     * Metodo encargado de insertar un alumno usando la presentencia
+     *
+     * @param a
+     * @throws SQLException
+     */
     public void insertarAlumnoPreSentencia(Alumno a) throws SQLException {
 	String dni = a.getDni();
 	String nombre = a.getNombre();
@@ -179,6 +207,12 @@ public class GestorAlumnos {
 	insertStatment.setInt(6, codCiclo);
     }
 
+    /**
+     * Metdodo encargado de insertar alumno sin presentencia
+     *
+     * @param a
+     * @throws SQLException
+     */
     public void insertarAlumno(Alumno a) throws SQLException {
 	String dni = a.getDni();
 	String nombre = a.getNombre();
@@ -199,6 +233,13 @@ public class GestorAlumnos {
 	st.close();
     }
 
+    /**
+     * Metodo encargado de modificar un alumno
+     *
+     * @param dniClave
+     * @param a
+     * @throws SQLException
+     */
     public void modificarAlumno(String dniClave, Alumno a) throws SQLException {
 	String dni = a.getDni();
 	String nombre = a.getNombre();
