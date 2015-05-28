@@ -46,7 +46,7 @@ public class GestorVisual extends JFrame implements ActionListener {
      * @throws ClassNotFoundException
      */
     public GestorVisual(String titulo) throws HeadlessException,
-    ClassNotFoundException, SQLException {
+	    ClassNotFoundException, SQLException {
 	super(titulo);
 	ga = new GestorAlumnos();
 	JPanel jp1 = new JPanel();
@@ -134,7 +134,7 @@ public class GestorVisual extends JFrame implements ActionListener {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see
      * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
      */
