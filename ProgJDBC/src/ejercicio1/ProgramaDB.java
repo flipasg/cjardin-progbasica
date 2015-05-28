@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author Iker Garcia Ramirez
@@ -24,8 +25,7 @@ public class ProgramaDB {
 
 	try {
 	    GestorAlumnos ga = new GestorAlumnos();
-	    // ga.crearTablas(); // la primera vez da un error de que la tabla
-	    // alumno no existe
+	    System.out.println(ga.crearTablas());
 	    BufferedReader bf = new BufferedReader(new InputStreamReader(
 		    System.in));
 	    int r = -1;
@@ -60,6 +60,9 @@ public class ProgramaDB {
 		}
 
 	    } while (r != 0);
+
+	    Ciclo[] ciclos = ga.todosCiclos();
+	    System.out.println(Arrays.toString(ciclos));
 
 	} catch (ClassNotFoundException e) {
 	    e.printStackTrace();

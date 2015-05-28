@@ -26,6 +26,13 @@ public class Ciclo {
 	this.horas = horas;
     }
 
+    /**
+     * @return the codCiclo
+     */
+    public int getCodCiclo() {
+	return codCiclo;
+    }
+
     /*
      * (non-Javadoc)
      *
@@ -33,8 +40,26 @@ public class Ciclo {
      */
     @Override
     public String toString() {
-	return "Ciclo: " + codCiclo + "\n\t Titulo: " + titulo + "\n\t Horas: "
-		+ horas + "]";
+	return titulo;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+	if (this == obj)
+	    return true;
+	if (obj == null)
+	    return false;
+	if (getClass() != obj.getClass())
+	    return false;
+	Ciclo other = (Ciclo) obj;
+	if (codCiclo != other.codCiclo)
+	    return false;
+	return true;
     }
 
 }

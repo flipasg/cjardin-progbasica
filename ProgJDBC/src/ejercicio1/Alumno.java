@@ -60,7 +60,7 @@ public class Alumno {
 	telefono = br.readLine();
 	System.out.println("Dime la fecha: ");
 	String fecha = br.readLine();
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	fechaNacimiento = sdf.parse(fecha);
 	System.out.println("Dime el ciclo: ");
 	codCiclo = Integer.parseInt(br.readLine());
@@ -68,7 +68,7 @@ public class Alumno {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override
